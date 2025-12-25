@@ -20,7 +20,7 @@ redisClient.connect()
   .catch((error) => console.error('❌ Redis connection failed:', error));
 
 const allowedOrigins = [
-  "http://localhost:3000",
+  // "http://localhost:3000",
   "http://3.110.188.4:3000",
   "http://3.110.188.4:3001"
 ];
