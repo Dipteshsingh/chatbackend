@@ -21,12 +21,21 @@ redisClient.connect()
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "http://3.110.188.4:3000"],
-    credentials: true,
-  })
-);
+const allowedOrigins = ["http://localhost:3000", "http://3.110.188.4:3000"];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+
 
 app.use(express.json());
 
