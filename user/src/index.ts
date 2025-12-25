@@ -19,30 +19,14 @@ redisClient.connect()
   .then(() => console.log('✅ Connected to Redis'))
   .catch((error) => console.error('❌ Redis connection failed:', error));
 
-const allowedOrigins = [
-  // "http://localhost:3000",
-  "http://3.110.188.4:3000",
-  "http://3.110.188.4:3001"
-];
-
 const app = express();
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      return callback(new Error("CORS not allowed"));
-    },
+    origin: ["http://localhost:3000", "http://3.110.188.4:3000"],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
-app.options("*", cors());
 
 app.use(express.json());
 
