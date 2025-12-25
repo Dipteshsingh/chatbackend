@@ -33,7 +33,8 @@ app.use(
     ],
     credentials: true,
   })
-);;
+);
+
 
 // routes --
 app.use('/api/users', userRouter);
