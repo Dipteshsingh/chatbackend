@@ -21,7 +21,7 @@ redisClient.connect()
 
 const app = express();
 
-const allowedOrigins = ["http://localhost:3000", "http://3.7.253.107:3000"];
+const allowedOrigins = ["http://localhost:3000", "http://52.66.68.225:3000", "http://52.66.68.225:3002"];
 
 app.use(cors({
   origin: function(origin, callback) {
